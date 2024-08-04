@@ -343,6 +343,7 @@ def mutant10(arr):
     return arr
 
 def mutant11(arr):
+    #Always merge right_half elements
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
@@ -374,6 +375,7 @@ def mutant11(arr):
     return arr
 
 def mutant12(arr):
+    #Always sort the entire array instead of splitting
     return sorted(arr)  # Mutation here
 
 def mutant13(arr):
@@ -400,6 +402,7 @@ def mutant13(arr):
     return arr
 
 def mutant14(arr):
+    #Incorrect mid calculation using addition
     if len(arr) > 1:
         mid = (len(arr) + 2)  # Mutation here
         left_half = arr[:mid]
@@ -431,6 +434,7 @@ def mutant14(arr):
     return arr
 
 def mutant15(arr):
+    #Always select right_half element in merge
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
@@ -458,6 +462,7 @@ def mutant15(arr):
     return arr
 
 def mutant16(arr):
+    #Always select left_half element in merge
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
@@ -485,6 +490,7 @@ def mutant16(arr):
     return arr
 
 def mutant17(arr):
+    #Incorrect index increment in merge
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
@@ -516,6 +522,7 @@ def mutant17(arr):
     return arr
 
 def mutant18(arr):
+    #Double the index increment in merge
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
@@ -547,6 +554,7 @@ def mutant18(arr):
     return arr
 
 def mutant19(arr):
+    #Always select left_half element if i < len(left_half)
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
@@ -578,6 +586,7 @@ def mutant19(arr):
     return arr
 
 def mutant20(arr):
+    #Always select right_half element if j < len(right_half)
     if len(arr) > 1:
         mid = len(arr) // 2
         left_half = arr[:mid]
