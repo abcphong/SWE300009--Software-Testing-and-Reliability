@@ -57,6 +57,321 @@ def test_mr4(sort_function):
     return sorted_modified_list == expected_sorted_modified_list
 
 
+# Example mutant functions for testing
+def mutant1(arr):
+    # ROR Mutation: <= instead of <
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant1(left_half)
+        mutant1(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] <= right_half[j]:  # Mutation here
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant2(arr):
+    # AOR Mutation: // 3 instead of // 2
+    if len(arr) > 1:
+        mid = len(arr) // 3  # Change back to //2 to fix the bug
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant2(left_half)
+        mutant2(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant3(arr):
+    # Replace ‘>’ with ‘>=’ in length check
+    if len(arr) >= 1:  # Mutation here
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant3(left_half)
+        mutant3(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant4(arr):
+    # Replace ‘<’ with ‘>’ in comparison
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant4(left_half)
+        mutant4(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] > right_half[j]:  # Mutation here
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant5(arr):
+    # Swap ‘left_half’ and ‘right_half’ only in the recursive call order
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        # Swap the order of recursive calls
+        mutant5(right_half)
+        mutant5(left_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant6(arr):
+    # Do not merge the left half
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant6(left_half)
+        mutant6(right_half)
+
+        i = j = k = 0
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+    return arr
+
+def mutant7(arr):
+    # Replace ‘k += 1’ with ‘k -= 1’
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant7(left_half)
+        mutant7(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k -= 1  # Mutation here
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k -= 1  # Mutation here
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k -= 1  # Mutation here
+    return arr
+
+def mutant8(arr):
+    # Always return the original array
+    return arr
+
+def mutant9(arr):
+    # Replace ‘if left_half[i] < right_half[j]’ with ‘if left_half[i] <= right_half[j]’
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant9(left_half)
+        mutant9(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] <= right_half[j]:  # Mutation here
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant10(arr):
+    # Change ‘mid = len(arr) // 2’ to ‘mid = (len(arr) // 2) + 1’
+    if len(arr) > 1:
+        mid = (len(arr) // 2) + 1  # Mutation here
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant10(left_half)
+        mutant10(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+# List of mutant functions
+mutants = [
+    mutant1,  # Function implementing the first mutant
+    mutant2,  # Function implementing the second mutant
+    mutant3,   
+    mutant4,
+    mutant5,
+    mutant6,
+    mutant7,
+    mutant8,
+    mutant9,
+    mutant10
+]
+
+def test_mutants():
+    for i, mutant in enumerate(mutants, start=1):
+        try:
+            # Replace merge_sort with mutant in tests
+            mr1_result = test_mr1(mutant)
+            mr2_result = test_mr2(mutant)
+            mr3_result = test_mr3(mutant)
+            mr4_result = test_mr4(mutant)
+            if mr1_result and mr2_result and mr3_result and mr4_result:
+                print(f"Mutant {i} survived.")
+            else:
+                print(f"Mutant {i} killed.")
+        except AssertionError as e:
+            print(f"Mutant {i} killed: {str(e)}")
+        except RecursionError:
+            print(f"Mutant {i} failed due to recursion error.")
+
 # Run tests on the original function
 print("Testing original merge_sort:")
 assert test_mr1(merge_sort), "MR1 failed on original function"
@@ -65,3 +380,6 @@ assert test_mr3(merge_sort), "MR3 failed on original function"
 assert test_mr4(merge_sort), "MR4 failed on original function"
 print("All metamorphic tests passed for the original function.\n")
 
+# Example test execution for mutation analysis
+print("Testing mutants:")
+test_mutants()
