@@ -341,6 +341,274 @@ def mutant10(arr):
             j += 1
             k += 1
     return arr
+
+def mutant11(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant11(left_half)
+        mutant11(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = right_half[j]  # Mutation here
+                j += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant12(arr):
+    return sorted(arr)  # Mutation here
+
+def mutant13(arr):
+    # Do not merge the left half
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant13(left_half)
+        mutant13(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant14(arr):
+    if len(arr) > 1:
+        mid = (len(arr) + 2)  # Mutation here
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant14(left_half)
+        mutant14(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant15(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant15(left_half)
+        mutant15(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            arr[k] = right_half[j]  # Mutation here
+            j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant16(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant16(left_half)
+        mutant16(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            arr[k] = left_half[i]  # Mutation here
+            i += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant17(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant17(left_half)
+        mutant17(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 2  # Mutation here
+            else:
+                arr[k] = right_half[j]
+                j += 2  # Mutation here
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant18(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant18(left_half)
+        mutant18(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 2  # Mutation here
+            else:
+                arr[k] = right_half[j]
+                j += 2  # Mutation here
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 2  # Mutation here
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 2  # Mutation here
+            k += 1
+    return arr
+
+def mutant19(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant19(left_half)
+        mutant19(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if i < len(left_half):  # Mutation here
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+def mutant20(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        mutant20(left_half)
+        mutant20(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if j < len(right_half):  # Mutation here
+                arr[k] = right_half[j]
+                j += 1
+            else:
+                arr[k] = left_half[i]
+                i += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+    return arr
+
+
 # List of mutant functions
 mutants = [
     mutant1,  # Function implementing the first mutant
@@ -352,7 +620,17 @@ mutants = [
     mutant7,
     mutant8,
     mutant9,
-    mutant10
+    mutant10,
+    mutant11,
+    mutant12,
+    mutant13,
+    mutant14,
+    mutant15,
+    mutant16,
+    mutant17,
+    mutant18,
+    mutant19,
+    mutant20
 ]
 
 def test_mutants():
